@@ -9,7 +9,7 @@
 # still marked experimental and a silent minor bump is not something to
 # discover on a machine holding live positions.
 
-FROM node:22.17-bookworm-slim AS build
+FROM node:22.23.4-bookworm-slim AS build
 WORKDIR /app
 
 # Manifests first, so a source-only change does not re-resolve the tree.
@@ -25,7 +25,7 @@ COPY packages packages
 COPY apps apps
 RUN npx tsc --build
 
-FROM node:22.17-bookworm-slim AS runtime
+FROM node:22.23.4-bookworm-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 
